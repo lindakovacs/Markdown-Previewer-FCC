@@ -1,0 +1,178 @@
+const Header = () => (
+  <header className='jumbotron'>
+    <h1 className='text-center'>
+      <img src='https://logos-download.com/wp-content/uploads/2016/09/React_logo_wordmark.png' width='200'/> 
+      <p>Markdown Previewer</p>
+    </h1>
+  </header>
+);
+
+/*
+ReactDOM.render(
+  <Tips className='text-center' tipArr={[
+            "Use # before text to create an h1.",
+            "Use ** ** or __ __ to make text <b>bold</b>.",
+            "Use ## before text to create an h2.",
+            "Use * * or _ _ to make text <i>italic</i>.",
+            "Denote sections of code with ``` ```."
+  ]}/>,
+  document.getElementById('tips')
+);
+
+// tip component
+let Tips = React.createClass({
+  propTypes: {
+    tipArr: React.PropTypes.array
+  },
+  getInitialState: function() {
+    return {
+      counter: 0
+    }
+  },
+  _incrementCounter: function() {
+    if (this.state.counter >= this.props.tipArr.length - 1) {
+      this.setState({counter: 0});
+    } else {
+      this.setState({counter: this.state.counter + 1});
+    }
+  },
+  componentDidMount: function() {
+    let myInterval = setInterval(this._incrementCounter, 10000);
+    this.setState({myInterval: myInterval});
+  },
+  render: function() {
+    let classes = 'heading-text-one';
+    return (
+      <div>
+        <h5 className={classes} dangerouslySetInnerHTML={{__html:this.props.tipArr[this.state.counter]}}></h5>
+      </div>
+    )
+  }  
+});
+*/
+
+const InitialMarkdown = 
+`# Welcome to React Markdown Previewer!
+
+## This is a sub-heading...
+### And here's some other cool stuff:
+
+[Here is a link to FreeCodeCamp](https://freecodecamp.com)
+
+Heres some code, \`<div></div>\`, between 2 backticks.
+
+\`\`\`
+// this is multi-line code:
+
+function anotherExample(firstLine, lastLine) {
+  if (firstLine == '\`\`\`' && lastLine == '\`\`\`') {
+    return multiLineCode;
+  }
+}
+\`\`\`
+  
+You can also make text **bold**... whoa!
+Or _italic_.
+Or... wait for it... **_both!_**
+And feel free to go crazy ~~crossing stuff out~~.
+
+There's also
+> Block Quotes!
+
+And if you want to get really crazy, even tables:
+
+Wild Header | Crazy Header | Another Header?
+------------ | ------------- | ------------- 
+Your content can | be here, and it | can be here....
+And here. | Okay. | I think we get it.
+
+- And of course there are lists.
+  - Some are bulleted.
+     - With different indentation levels.
+        - That look like this.
+
+
+1. And there are numbererd lists too.
+1. Use just 1s if you want! 
+1. But the list goes on...
+- Even if you use dashes or asterisks.
+* And last but not least, let's not forget embedded images:
+
+![React Logo w/ Text](https://goo.gl/Umyytc)
+
+`;
+
+class Input extends React.Component {
+  constructor(props) {
+      super(props);
+      this.handleInput = this.handleInput.bind(this);
+    }
+
+  handleInput(e) {
+    this.props.onChange(e.target.value);
+  }
+  render() {
+    return <textarea id='editor'className='input' defaultValue={InitialMarkdown} onChange={this.handleInput} />;
+  }
+}
+
+var renderer = new marked.Renderer()
+
+renderer.link = function(href, title, text) {
+  return `<a href=${href} target="_blank">${text}</a>`
+}
+
+marked.setOptions({
+  renderer,
+  highlight: function(code) {
+    return hljs.highlightAuto(code).value
+  },
+  breaks: true
+})
+
+class Markdown extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { text: InitialMarkdown };
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(text) {
+    this.setState({ text });
+  }
+  render() {
+    return (
+      <div className='Container'>
+        <Input onChange={this.handleChange} />
+				<div className='output' id='preview' dangerouslySetInnerHTML={{__html: marked(this.state.text)}}/>
+      </div>
+    );
+  }
+}
+
+const Footer = () => (
+  <footer className='col-xs-8 col-xs-offset-2'>
+    <hr />
+    <div className="text-center">&#169; 2018 Made with &#10084; by Linda Kovacs</div>
+    <div className='text-center'>
+      <a href="https://www.facebook.com/lindakovacsart" target="_blank"><span class="fa fa-facebook-f"></span> Facebook | </a>
+        <a href="https://twitter.com/lindakovacsart" target="_blank"><span class="fa fa-twitter"></span> Twitter | </a>
+        <a href="https://plus.google.com/u/1/112468176480762133222" target="_blank"><span class="fa fa-google-plus"></span> Google+ | </a>
+        <a href="https://www.linkedin.com/in/lindakovacsart" target="_blank"><span class="fa fa-linkedin"></span> LinkedIn | </a>
+        <a href="https://github.com/lindakovacs" target="_blank"><span class="fa fa-github"></span> GitHub | </a>
+        <a href="https://www.freecodecamp.org/lindakovacs" target="_blank"><i class="fa fa-fire"></i>
+            FreeCodeCamp | </a> 
+        <a href="https://codepen.io/lindakovacs" target="_blank"><i class="fa fa-codepen"></i>Codepen</a>
+      </div>
+  </footer>
+);
+
+const App = () => (
+  <div className='container-fluid'>
+    <Header/>
+    <Markdown/>
+    <Footer/>
+  </div>
+);
+
+
+ReactDOM.render(<App/>, document.getElementById('app'));

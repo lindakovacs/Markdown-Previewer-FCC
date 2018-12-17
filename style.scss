@@ -1,0 +1,170 @@
+body {
+  background: #0000FF;
+  padding: 25px;
+}
+  
+.jumbotron {
+  margin-bottom: 25px;
+  border-radius: 0 !important;
+}
+.App {
+  font-family: Arian, sans-serif;
+}
+.Container{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 98%;
+}
+.input{
+	height: 94vh;
+	margin: 10px 10px 10px 20px;
+	padding: 5px;
+	font-size: 15px;
+	width: 50%;
+	resize: none;
+}
+.output{
+	height: 95vh;
+	margin: 10px 0px 10px 10px;
+	padding: 0px 15px;
+	background-color: #fff;
+	color: #000;
+	font-size: 15px;
+	width: 50%;
+	overflow: auto;
+}
+div::-webkit-scrollbar {
+    width: 12px;
+}
+div::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+div::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+div::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+textarea::-webkit-scrollbar {
+    width: 12px;
+}
+textarea::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+textarea::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+textarea::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+@media (max-width: 812px) {
+	.Container{
+		flex-direction: column;
+		width: 100%;
+	}
+	.input{
+		width: 95%;
+		height: 47vh;
+		margin: 3px;
+	}
+	.output{
+		width: 95%;
+		height: 47vh;
+		margin: 3px;
+	}
+}
+
+footer {
+  color: #fff;
+}
+
+footer a {
+color: #fff;
+position: relative;
+text-decoration: none;
+font-weight: bold;
+}
+footer a:hover {
+color: #000;
+background-color: #fff;
+text-decoration: none;
+}
+
+
+
+/*
+Atom One Dark With support for ReasonML by Gidi Morris, based off work by Daniel Gamage
+Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  line-height: 1.3em;
+  color: #abb2bf;
+  background: #282c34;
+  border-radius: 5px;
+}
+.hljs-keyword, .hljs-operator {
+  color: #F92672;
+}
+.hljs-pattern-match {
+  color: #F92672;
+}
+.hljs-pattern-match .hljs-constructor {
+  color: #61aeee;
+}
+.hljs-function {
+  color: #61aeee;
+}
+.hljs-function .hljs-params {
+  color: #A6E22E;
+}
+.hljs-function .hljs-params .hljs-typing {
+  color: #FD971F;
+}
+.hljs-module-access .hljs-module {
+  color: #7e57c2;
+}
+.hljs-constructor {
+  color: #e2b93d;
+}
+.hljs-constructor .hljs-string {
+  color: #9CCC65;
+}
+.hljs-comment, .hljs-quote {
+  color: #b18eb1;
+  font-style: italic;
+}
+.hljs-doctag, .hljs-formula {
+  color: #c678dd;
+}
+.hljs-section, .hljs-name, .hljs-selector-tag, .hljs-deletion, .hljs-subst {
+  color: #e06c75;
+}
+.hljs-literal {
+  color: #56b6c2;
+}
+.hljs-string, .hljs-regexp, .hljs-addition, .hljs-attribute, .hljs-meta-string {
+  color: #98c379;
+}
+.hljs-built_in, .hljs-class .hljs-title {
+  color: #e6c07b;
+}
+.hljs-attr, .hljs-variable, .hljs-template-variable, .hljs-type, .hljs-selector-class, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-number {
+  color: #d19a66;
+}
+.hljs-symbol, .hljs-bullet, .hljs-link, .hljs-meta, .hljs-selector-id, .hljs-title {
+  color: #61aeee;
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: bold;
+}
+.hljs-link {
+  text-decoration: underline;
+}
